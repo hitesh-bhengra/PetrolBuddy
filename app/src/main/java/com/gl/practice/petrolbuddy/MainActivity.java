@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements FragmentMainList.OnFragmentInteractionListener,
-        FragmentMileageDetails.OnFragmentInteractionListener, FragmentCalenderView.OnFragmentInteractionListener {
+        MileageDetails.OnFragmentInteractionListener, CalenderView.OnFragmentInteractionListener {
 
     /*
      * Initializing all the components
@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
          * Adding fragments to adapter
          */
         mPagerAdapter.addFragment(new FragmentMainList(), "List");
-        mPagerAdapter.addFragment(new FragmentMileageDetails(), "Mileage");
-        mPagerAdapter.addFragment(new FragmentCalenderView(), "Calender");
+        mPagerAdapter.addFragment(new MileageDetails(), "Mileage");
+        mPagerAdapter.addFragment(new CalenderView(), "Calender");
 
         mViewPager.setAdapter(mPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
@@ -106,11 +106,14 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
             public void onClick(DialogInterface dialog, int which) {
 
                 getStringFromAlertDialog();
-                if (dateText.isEmpty() || petrolText.isEmpty() || priceText.isEmpty() || kmText.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Fields Empty", Toast.LENGTH_SHORT).show();
+                if (dateText.isEmpty() || petrolText.isEmpty() || priceText.isEmpty() ||
+                        kmText.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Fields Empty",
+                            Toast.LENGTH_SHORT).show();
                 } else if (cursor.getCount() != 0) {
                     if (Float.parseFloat(kmText) <= receivedKMValue)
-                        Toast.makeText(MainActivity.this, "KM cannot be less", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "KM cannot be less",
+                                Toast.LENGTH_SHORT).show();
                     else {
 
 
@@ -125,7 +128,8 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
                             toastMessage = "Saved Successfully";
                         } else
                             toastMessage = "Entry Failed";
-                        Toast.makeText(MainActivity.this, toastMessage, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, toastMessage,
+                                Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     insertResponse = newDatabase.insertData(dateText,
@@ -135,10 +139,9 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
                         toastMessage = "Saved Successfully";
                     } else
                         toastMessage = "Entry Failed";
-                    Toast.makeText(MainActivity.this, toastMessage, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, toastMessage,
+                            Toast.LENGTH_SHORT).show();
                 }
-
-
 
 
                 mPagerAdapter.notifyDataSetChanged();
@@ -148,7 +151,8 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
         mAlertInputDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(MainActivity.this, "Action Cancelled", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Action Cancelled",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
