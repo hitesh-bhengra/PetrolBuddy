@@ -61,16 +61,14 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
         cursor.moveToPosition(i);
 
         myViewHolder.tv_date.setText(cursor.getString(index_date));
-        myViewHolder.tv_petrol.setText(Double.toString(cursor.getDouble(index_petrol)));
-        myViewHolder.tv_price.setText(Double.toString(cursor.getDouble(index_price)));
-        myViewHolder.tv_km.setText(String.format("%.1f",cursor.getDouble(index_km)));
+        myViewHolder.tv_petrol.setText(String.format("%.2f",cursor.getDouble(index_petrol)));
+        myViewHolder.tv_price.setText(String.format("%.2f",cursor.getDouble(index_price)));
+        myViewHolder.tv_km.setText(String.format("%.2f",cursor.getDouble(index_km)));
 
         Log.d("Index Values", Integer.toString(index_date));
         Log.d("Index Values", Integer.toString(index_petrol));
         Log.d("Index Values", Integer.toString(index_price));
         Log.d("Index Values", Integer.toString(index_km));
-
-
     }
 
 }

@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date : " />
+            android:text="@string/dialog_date_heading" />
 
         <DatePicker
             android:id="@+id/date_picker"
@@ -36,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Petrol : " />
+            android:text="@string/dialog_petrol_heading" />
 
         <EditText
             android:id="@+id/petrol_text"
@@ -44,6 +44,10 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_petrol_unit"/>
     </LinearLayout>
 
     <LinearLayout
@@ -56,7 +60,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price : " />
+            android:text="@string/dialog_price_heading" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/dialog_price_unit"/>
 
         <EditText
             android:id="@+id/price_text"
@@ -76,7 +86,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="KM Reading : " />
+            android:text="@string/dialog_km_heading" />
 
         <EditText
             android:id="@+id/km_text"
@@ -84,5 +94,9 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_km_unit"/>
     </LinearLayout>
 </LinearLayout>

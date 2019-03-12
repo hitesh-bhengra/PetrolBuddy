@@ -71,6 +71,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getMileageData() {
+        String query = "Select "+column_km_reading+", "+column_petrol+" from "+TABLE_NAME;
+        cursor = myDatabase.rawQuery(query,null);
+        cursor.moveToFirst();
+        return cursor;
+    }
+
     public Cursor getKM() {
 
         myDatabase = this.getReadableDatabase();
@@ -84,7 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int getCount() {
 
         myDatabase = this.getReadableDatabase();
-        String query = "Select "+column_id+" from "+TABLE_NAME;
+        String query = "Select * from "+TABLE_NAME;
         cursor = myDatabase.rawQuery(query,null);
         return cursor.getCount();
     }
