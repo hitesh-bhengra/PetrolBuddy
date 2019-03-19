@@ -1,12 +1,15 @@
 package com.gl.practice.petrolbuddy;
 
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -20,17 +23,20 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView tv_date;
-        private TextView tv_petrol;
-        private TextView tv_price;
-        private TextView tv_km;
+
+        private TextView tv_date_value;
+        private TextView tv_petrol_value;
+        private TextView tv_price_value;
+        private TextView tv_km_value;
+        private RelativeLayout rl_list_item;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv_date = itemView.findViewById(R.id.tv_date);
-            tv_petrol = itemView.findViewById(R.id.tv_petrol);
-            tv_price = itemView.findViewById(R.id.tv_price);
-            tv_km = itemView.findViewById(R.id.tv_km);
+            tv_date_value = itemView.findViewById(R.id.tv_date_value);
+            tv_petrol_value= itemView.findViewById(R.id.tv_petrol_value);
+            tv_price_value = itemView.findViewById(R.id.tv_price_value);
+            tv_km_value = itemView.findViewById(R.id.tv_km_value);
+            rl_list_item = itemView.findViewById(R.id.list_item_layout);
         }
     }
 
@@ -51,7 +57,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        Cursor cursor = myDatabase.viewData();
+        Cursor cursor = myDatabase.getData();
 
         index_date = cursor.getColumnIndex("Date");
         index_petrol = cursor.getColumnIndex("Petrol");
@@ -60,15 +66,19 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
 
         cursor.moveToPosition(i);
 
-        myViewHolder.tv_date.setText(cursor.getString(index_date));
-        myViewHolder.tv_petrol.setText(String.format("%.2f",cursor.getDouble(index_petrol)));
-        myViewHolder.tv_price.setText(String.format("%.2f",cursor.getDouble(index_price)));
-        myViewHolder.tv_km.setText(String.format("%.2f",cursor.getDouble(index_km)));
+        myViewHolder.tv_date_value.setText(cursor.getString(index_date));
+        myViewHolder.tv_petrol_value.setText(String.format("%.2f",cursor.getDouble(index_petrol))+" lit.");
+        myViewHolder.tv_price_value.setText("₹ "+String.format("%.2f",cursor.getDouble(index_price)));
+        myViewHolder.tv_km_value.setText(String.format("%.2f",cursor.getDouble(index_km))+" km");
 
         Log.d("Index Values", Integer.toString(index_date));
         Log.d("Index Values", Integer.toString(index_petrol));
         Log.d("Index Values", Integer.toString(index_price));
         Log.d("Index Values", Integer.toString(index_km));
+
+        if(i%2 != 0) {
+            myViewHolder.rl_list_item.setBackgroundColor(Color.parseColor("#DDDDDD"));
+        }
     }
 
 }

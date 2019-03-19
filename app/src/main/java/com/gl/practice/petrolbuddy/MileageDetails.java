@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +37,12 @@ public class MileageDetails extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mainActivity = (MainActivity) context;
@@ -45,7 +53,7 @@ public class MileageDetails extends Fragment {
     public void onStart() {
         super.onStart();
         mMileageText = getView().findViewById(R.id.mileage_value);
-        mCursor = mDatabase.getMileageData();
+        mCursor = mDatabase.getData();
         if (mCursor.getCount() == 0) {
             mMileageText.setText("No data");
         } else if (mCursor.getCount() == 1) {

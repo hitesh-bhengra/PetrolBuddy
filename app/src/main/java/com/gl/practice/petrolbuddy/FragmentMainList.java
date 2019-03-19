@@ -27,15 +27,8 @@ public class FragmentMainList extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mainActivity = (MainActivity) context;
-    }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         mRecyclerView = getView().findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -45,6 +38,19 @@ public class FragmentMainList extends Fragment {
         mRecyclerAdapter = new ViewAdapter();
         mRecyclerView.setAdapter(mRecyclerAdapter);
         mRecyclerAdapter.setDatabaseInstance(mainActivity.newDatabase);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mainActivity = (MainActivity) context;
+
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     public interface OnFragmentInteractionListener {

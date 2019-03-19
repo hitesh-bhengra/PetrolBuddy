@@ -2,15 +2,21 @@ package com.gl.practice.petrolbuddy;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -31,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
     private EditText mPrice;
     private EditText mKMReading;
     private DatePicker mDate;
+    private android.support.v7.widget.Toolbar mToolbar;
+    private FloatingActionButton mFab;
 
     private String toastMessage;
     private boolean insertResponse;
@@ -54,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
 
         InitializeAll();
 
+        setSupportActionBar(mToolbar);
+
         newDatabase = new DatabaseHelper(this);
         mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
 
@@ -63,8 +73,28 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
         mPagerAdapter.addFragment(new FragmentMainList(), "List");
         mPagerAdapter.addFragment(new MileageDetails(), "Mileage");
         mPagerAdapter.addFragment(new CalenderView(), "Calender");
-
         mViewPager.setAdapter(mPagerAdapter);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                if (i == 0) {
+                  mFab.show();
+                }
+                else {
+                    mFab.hide();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
@@ -180,7 +210,14 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
         priceText = mPrice.getText().toString();
         kmText = mKMReading.getText().toString();
         dateText = Integer.toString(mDate.getDayOfMonth()) + "/" +
-                Integer.toString(mDate.getMonth()) + "/" + Integer.toString(mDate.getYear());
+                Integer.toString(mDate.getMonth() + 1) + "/" + Integer.toString(mDate.getYear());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_options, menu);
+        return true;
     }
 
     /*
@@ -189,5 +226,20 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
     private void InitializeAll() {
         mTabLayout = findViewById(R.id.tab_layout);
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+    }
+
+    /**
+     * For hide/show fab on fragment exchange
+     *
+     * @param isShowing
+     */
+    public void hideNShowFab(boolean isShowing) {
+        if (isShowing) {
+            mFab.show();
+        } else {
+            mFab.hide();
+        }
     }
 }

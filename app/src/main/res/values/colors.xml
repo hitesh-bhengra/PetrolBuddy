@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFC200</color>
-    <color name="colorPrimaryDark">#C79200</color>
-    <color name="colorAccent">#FFFa11</color>
+    <color name="colorPrimary">#00FFEA</color>
+    <color name="colorPrimaryDark">#00E1FF</color>
+    <color name="colorAccent">#00E1FF</color>
     <color name="black">#000000</color>
+    <color name="black_hue">#3B3B3B</color>
+    <color name="tab_indicator">#0B008A</color>
     <color name="white">#FFFFFF</color>
+    <color name="list_item_alternate">#EEEEEE</color>
 </resources>

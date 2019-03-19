@@ -11,21 +11,23 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/toolbar_gradient"
         android:theme="@style/AppTheme"
         app:title="@string/app_name"
-        app:titleTextColor="@color/black">
+        app:titleTextColor="@color/black_hue"
+        android:elevation="5sp">
 
     </android.support.v7.widget.Toolbar>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="60sp"
         android:layout_below="@id/toolbar"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/colorPrimaryDark"
+        app:tabIndicatorHeight="5sp"
         app:tabMode="fixed">
 
     </android.support.design.widget.TabLayout>
