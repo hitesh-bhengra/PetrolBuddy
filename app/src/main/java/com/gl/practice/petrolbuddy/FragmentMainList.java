@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class FragmentMainList extends Fragment {
 
@@ -19,6 +20,7 @@ public class FragmentMainList extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private MainActivity mainActivity;
     private ViewAdapter mRecyclerAdapter;
+    private TextView mNoDataText;
 
     @Nullable
     @Override
@@ -31,6 +33,7 @@ public class FragmentMainList extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mRecyclerView = getView().findViewById(R.id.recycler_view);
+        mNoDataText = getView().findViewById(R.id.tv_no_data);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -38,6 +41,15 @@ public class FragmentMainList extends Fragment {
         mRecyclerAdapter = new ViewAdapter();
         mRecyclerView.setAdapter(mRecyclerAdapter);
         mRecyclerAdapter.setDatabaseInstance(mainActivity.newDatabase);
+
+        if(mainActivity.newDatabase.getCount() == 0) {
+            mRecyclerView.setVisibility(View.INVISIBLE);
+            mNoDataText.setVisibility(View.VISIBLE);
+        }
+        else {
+            mRecyclerView.setVisibility(View.VISIBLE);
+            mNoDataText.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

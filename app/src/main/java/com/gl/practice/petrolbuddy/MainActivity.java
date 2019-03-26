@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
 
 
                 mPagerAdapter.notifyDataSetChanged();
+
             }
         });
 

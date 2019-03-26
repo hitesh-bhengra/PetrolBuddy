@@ -17,6 +17,7 @@ import android.view.ViewGroup;
  */
 public class CalenderView extends Fragment {
     private MainActivity mainActivity;
+    private DatabaseHelper mNewDatabase;
 
     public CalenderView() {
         // Required empty public constructor
@@ -32,12 +33,12 @@ public class CalenderView extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //mainActivity.hideNShowFab(false);
     }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mainActivity = (MainActivity) context;
+        mNewDatabase = mainActivity.newDatabase;
     }
 
     public interface OnFragmentInteractionListener {

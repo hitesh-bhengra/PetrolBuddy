@@ -24,29 +24,29 @@
             android:gravity="center"
             android:paddingLeft="10sp"/>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/ll_partition"
             android:layout_width="match_parent"
-            android:layout_height="35sp"
-            android:gravity="center"
-            android:layout_below="@id/tv_date_value"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_date_value">
 
             <TextView
                 android:id="@+id/tv_petrol"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Petrol : "
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
+                android:layout_alignParentStart="true"
                 android:textSize="20sp"
                 android:paddingLeft="10sp"/>
 
             <TextView
                 android:id="@+id/tv_petrol_value"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_petrol"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
@@ -54,8 +54,9 @@
 
             <TextView
                 android:id="@+id/tv_price"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_petrol_value"
                 android:layout_margin="1sp"
                 android:layout_weight="1"
                 android:text="Price : "
@@ -66,15 +67,16 @@
 
             <TextView
                 android:id="@+id/tv_price_value"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_toRightOf="@id/tv_price"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_km"

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -57,7 +58,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        Cursor cursor = myDatabase.getData();
+        Cursor cursor = myDatabase.getListData();
 
         index_date = cursor.getColumnIndex("Date");
         index_petrol = cursor.getColumnIndex("Petrol");
@@ -71,14 +72,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
         myViewHolder.tv_price_value.setText("₹ "+String.format("%.2f",cursor.getDouble(index_price)));
         myViewHolder.tv_km_value.setText(String.format("%.2f",cursor.getDouble(index_km))+" km");
 
-        Log.d("Index Values", Integer.toString(index_date));
-        Log.d("Index Values", Integer.toString(index_petrol));
-        Log.d("Index Values", Integer.toString(index_price));
-        Log.d("Index Values", Integer.toString(index_km));
-
         if(i%2 != 0) {
             myViewHolder.rl_list_item.setBackgroundColor(Color.parseColor("#DDDDDD"));
         }
     }
-
 }

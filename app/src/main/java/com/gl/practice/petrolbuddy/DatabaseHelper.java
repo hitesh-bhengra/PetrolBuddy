@@ -81,6 +81,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getListData() {
+
+        myDatabase = this.getReadableDatabase();
+        String query = "Select * from "+TABLE_NAME+" order by "+column_km_reading+" DESC";
+        cursor = myDatabase.rawQuery(query, null);
+        cursor.moveToFirst();
+        return cursor;
+    }
+
     public int getCount() {
 
         Cursor cursor = getData();

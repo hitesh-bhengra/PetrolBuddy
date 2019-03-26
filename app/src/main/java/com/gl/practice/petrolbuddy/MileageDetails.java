@@ -23,6 +23,7 @@ public class MileageDetails extends Fragment {
     private TextView mMileageText;
     private Cursor mCursor;
     private MainActivity mainActivity;
+    private TextView mMileageUnit;
 
     public MileageDetails() {
         // Required empty public constructor
@@ -32,14 +33,16 @@ public class MileageDetails extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mileage_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_mileage_details, container, false);
+
+        return view;
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        mMileageUnit = getView().findViewById(R.id.tv_mileage_unit);
     }
 
     @Override
@@ -56,11 +59,14 @@ public class MileageDetails extends Fragment {
         mCursor = mDatabase.getData();
         if (mCursor.getCount() == 0) {
             mMileageText.setText("No data");
+            mMileageUnit.setVisibility(View.INVISIBLE);
         } else if (mCursor.getCount() == 1) {
             mMileageText.setText("Only one entry");
+            mMileageUnit.setVisibility(View.INVISIBLE);
         } else {
             Double mileage = calculateMileage(mCursor);
             mMileageText.setText(String.format("%.2f", mileage));
+            mMileageUnit.setVisibility(View.VISIBLE);
         }
     }
 
