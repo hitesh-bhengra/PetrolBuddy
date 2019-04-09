@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CalenderView">
+    tools:context=".FragmentCalenderView">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
         android:gravity="center"
         android:orientation="horizontal">
         <ImageView
-            android:id="@+id/previous_month"
+            android:id="@+id/iv_previous_month"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -30,7 +30,7 @@
             android:src="@drawable/prev_month"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/display_current_date"
+            android:id="@+id/tv_display_current_month"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -38,7 +38,7 @@
             android:textStyle="bold"
             android:layout_weight="1"/>
         <ImageView
-            android:id="@+id/next_month"
+            android:id="@+id/iv_next_month"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -124,7 +124,7 @@
             android:layout_weight="1"/>
     </LinearLayout>
     <GridView
-        android:id="@+id/calendar_grid"
+        android:id="@+id/gv_calendar_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="7"

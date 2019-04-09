@@ -2,14 +2,12 @@ package com.gl.practice.petrolbuddy;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,7 +22,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements FragmentMainList.OnFragmentInteractionListener,
-        MileageDetails.OnFragmentInteractionListener, CalenderView.OnFragmentInteractionListener {
+        FragmentMileageDetails.OnFragmentInteractionListener, FragmentCalenderView.OnFragmentInteractionListener {
 
     /*
      * Initializing all the components
@@ -71,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements FragmentMainList.
          * Adding fragments to adapter
          */
         mPagerAdapter.addFragment(new FragmentMainList(), "List");
-        mPagerAdapter.addFragment(new MileageDetails(), "Mileage");
-        mPagerAdapter.addFragment(new CalenderView(), "Calender");
+        mPagerAdapter.addFragment(new FragmentMileageDetails(), "Mileage");
+        mPagerAdapter.addFragment(new FragmentCalenderView(), "Calender");
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

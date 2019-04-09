@@ -17,7 +17,7 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MileageDetails extends Fragment {
+public class FragmentMileageDetails extends Fragment {
 
     private DatabaseHelper mDatabase;
     private TextView mMileageText;
@@ -25,7 +25,7 @@ public class MileageDetails extends Fragment {
     private MainActivity mainActivity;
     private TextView mMileageUnit;
 
-    public MileageDetails() {
+    public FragmentMileageDetails() {
         // Required empty public constructor
     }
 
@@ -50,6 +50,13 @@ public class MileageDetails extends Fragment {
         super.onAttach(context);
         mainActivity = (MainActivity) context;
         mDatabase = mainActivity.newDatabase;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser)
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
     }
 
     @Override

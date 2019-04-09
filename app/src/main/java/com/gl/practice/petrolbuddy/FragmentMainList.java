@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
 public class FragmentMainList extends Fragment {
@@ -19,7 +18,7 @@ public class FragmentMainList extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private MainActivity mainActivity;
-    private ViewAdapter mRecyclerAdapter;
+    private ListViewAdapter mRecyclerAdapter;
     private TextView mNoDataText;
 
     @Nullable
@@ -38,7 +37,7 @@ public class FragmentMainList extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mRecyclerAdapter = new ViewAdapter();
+        mRecyclerAdapter = new ListViewAdapter();
         mRecyclerView.setAdapter(mRecyclerAdapter);
         mRecyclerAdapter.setDatabaseInstance(mainActivity.newDatabase);
 
@@ -59,6 +58,12 @@ public class FragmentMainList extends Fragment {
 
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser)
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+    }
 
     @Override
     public void onStart() {
