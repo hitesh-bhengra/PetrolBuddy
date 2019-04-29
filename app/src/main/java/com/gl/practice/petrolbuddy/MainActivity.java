@@ -21,6 +21,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.gl.practice.petrolbuddy.Adapter.DatabaseHelper;
+import com.gl.practice.petrolbuddy.Adapter.PagerAdapter;
+import com.gl.practice.petrolbuddy.Fragments.FragmentCalenderView;
+import com.gl.practice.petrolbuddy.Fragments.FragmentMainList;
+import com.gl.practice.petrolbuddy.Fragments.FragmentMileageDetails;
+
 public class MainActivity extends AppCompatActivity implements FragmentMainList.OnFragmentInteractionListener,
         FragmentMileageDetails.OnFragmentInteractionListener, FragmentCalenderView.OnFragmentInteractionListener {
 

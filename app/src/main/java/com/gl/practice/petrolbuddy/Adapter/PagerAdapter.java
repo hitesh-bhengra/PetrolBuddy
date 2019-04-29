@@ -1,4 +1,4 @@
-package com.gl.practice.petrolbuddy;
+package com.gl.practice.petrolbuddy.Adapter;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

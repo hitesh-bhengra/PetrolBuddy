@@ -1,4 +1,4 @@
-package com.gl.practice.petrolbuddy;
+package com.gl.practice.petrolbuddy.Adapter;
 
 import android.database.Cursor;
 import android.graphics.Color;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.gl.practice.petrolbuddy.R;
 
 
 public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.MyViewHolder> {

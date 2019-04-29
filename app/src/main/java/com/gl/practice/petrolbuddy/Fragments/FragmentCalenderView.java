@@ -1,4 +1,4 @@
-package com.gl.practice.petrolbuddy;
+package com.gl.practice.petrolbuddy.Fragments;
 
 
 import android.content.Context;
@@ -14,8 +14,12 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gl.practice.petrolbuddy.Adapter.DatabaseHelper;
+import com.gl.practice.petrolbuddy.Adapter.GridCalendarAdapter;
+import com.gl.practice.petrolbuddy.MainActivity;
+import com.gl.practice.petrolbuddy.R;
+
 import java.util.Calendar;
-import java.util.Date;
 
 
 /**

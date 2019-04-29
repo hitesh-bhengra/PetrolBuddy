@@ -1,4 +1,4 @@
-package com.gl.practice.petrolbuddy;
+package com.gl.practice.petrolbuddy.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -12,6 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.gl.practice.petrolbuddy.Adapter.ListViewAdapter;
+import com.gl.practice.petrolbuddy.MainActivity;
+import com.gl.practice.petrolbuddy.R;
 
 public class FragmentMainList extends Fragment {
 

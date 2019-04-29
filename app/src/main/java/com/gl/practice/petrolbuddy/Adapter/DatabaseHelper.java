@@ -1,4 +1,4 @@
-package com.gl.practice.petrolbuddy;
+package com.gl.practice.petrolbuddy.Adapter;
 
 import android.content.ContentValues;
 import android.content.Context;

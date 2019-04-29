@@ -1,4 +1,4 @@
-package com.gl.practice.petrolbuddy;
+package com.gl.practice.petrolbuddy.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.gl.practice.petrolbuddy.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -52,5 +54,11 @@ public class GridCalendarAdapter extends BaseAdapter {
         mDateText = convertView.findViewById(R.id.tv_date);
         mDateText.setText(Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH)));
         return convertView;
+    }
+
+    void getStartofMonth() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.getTime();
+
     }
 }
